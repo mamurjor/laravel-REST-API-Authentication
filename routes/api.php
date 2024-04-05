@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\RegisterController;
+use App\Http\Controllers\API\PostCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,17 @@ use App\Http\Controllers\API\RegisterController;
 Route::post('mamuuserregister',[RegisterController::class,'mamuuserregister']);
 
 Route::post("mamulogin",[RegisterController::class,'mamulogin']);
+
+Route::get("PostCategories",[PostCategoryController::class,'index']);
+
+Route::get("PostCategories/{id}",[PostCategoryController::class,'show']);
+
+Route::post("PostCategories",[PostCategoryController::class,'store']);
+
+
+Route::post("PostCategories/{id}",[PostCategoryController::class,'update']);
+
+Route::delete("PostCategories/{id}",[PostCategoryController::class,'destroy']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
