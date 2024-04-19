@@ -25,7 +25,19 @@ class PostCategoryController extends BaseController
     }
 
     public function store(Request $request){
-        $catagoryinput = $request->all();
+
+       $imagename =  time().".".$request->image->extension();
+
+        $myimage=$request->image->move(public_path('upload'),$imagename);
+
+
+
+
+      $catagoryinput = [
+        'name' => $request->name,
+        'slug' =>$request->slug,
+        'image' =>$myimage
+      ];
 
         $catagoryinputsave =  PostCategory::create($catagoryinput);
 
@@ -54,7 +66,10 @@ class PostCategoryController extends BaseController
         $datacheck = $request->validate([
             'name' => "required",
             'slug' => "required",
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
+
+
 
        $getcatebyid =  PostCategory::findOrFail($id);
 

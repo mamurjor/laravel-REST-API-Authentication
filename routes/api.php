@@ -19,7 +19,7 @@ Route::post('mamuuserregister',[RegisterController::class,'mamuuserregister']);
 
 Route::post("mamulogin",[RegisterController::class,'mamulogin']);
 
-Route::get("PostCategories",[PostCategoryController::class,'index']);
+Route::middleware('auth:sanctum')->get("PostCategories",[PostCategoryController::class,'index']);
 
 Route::get("PostCategories/{id}",[PostCategoryController::class,'show']);
 

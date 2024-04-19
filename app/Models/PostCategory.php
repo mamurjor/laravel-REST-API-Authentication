@@ -10,6 +10,8 @@ class PostCategory extends Model
     use HasFactory;
     protected $fillable = [
         "name",
-        "slug"
+        "slug",
+        "image"
+
     ];
 }
